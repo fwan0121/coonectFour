@@ -1,5 +1,5 @@
 class GameConfig {
-    constructor(rows, cols) {
+    constructor(rows = 6, cols = 7) {
         this.rows = rows;
         this.cols = cols;
     }
