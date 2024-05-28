@@ -4,3 +4,5 @@ class GameConfig {
         this.cols = cols;
     }
 }
+
+export default GameConfig;

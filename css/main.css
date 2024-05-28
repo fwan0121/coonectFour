@@ -1,28 +1,108 @@
+/* body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    margin: 20px 0;
+}
+
+section {
+    display: inline-block;
+    margin-top: 20px;
+}
+
 #board {
     display: grid;
-    margin: 20px auto;
-    border: 3px solid black;
-    grid-gap: 5px;
-    padding: 10px;
+    gap: 8px;
+    margin: 20px 0;
 }
 
 .cell {
     width: 30px;
     height: 30px;
-    border: 1px solid black;
+    background-color: white;
+    border: 1px solid #000;
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
     cursor: pointer;
+    border-radius: 50%;
 }
 
-.cell:hover {
-    background-color: #cccccc;
+#resetBtn {
+    display: block;
+    margin: 10px auto;
+    padding: 10px 20px;
+    font-size: 16px;
 }
-
 
 #gameStatus {
+    margin-top: 20px;
+    font-size: 25px;
+} */
+
+
+/* main.css */
+body {
+    font-family: Arial, sans-serif;
     text-align: center;
-    margin: 10px 0;
-    font-size: 20px;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
 }
+
+h1 {
+    margin: 20px 0;
+}
+
+section {
+    display: inline-block;
+    margin-top: 20px;
+}
+
+#board {
+    display: grid;
+    gap: 5px;
+    margin: 20px 0;
+}
+
+.cell {
+    width: 30px;
+    height: 30px;
+    background-color: white;
+    border: 1px solid #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+#resetBtn {
+    display: block;
+    margin: 10px auto;
+    padding: 10px 20px;
+    font-size: 16px;
+}
+
+#gameStatus {
+    margin-top: 20px;
+    font-size: 18px;
+}
+
+/* 懸停效果的球 */
+.hover-ball {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    display: none;
+    background-color: grey;
+}
+
