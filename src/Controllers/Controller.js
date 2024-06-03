@@ -1,6 +1,3 @@
-import ConnectFourModel from '../Models/ConnectFourModel';
-import GameView from '../Views/GameView';
-
 class Controller {
     constructor(model, view) {
         this.model = model;

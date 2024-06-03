@@ -1,6 +1,3 @@
-import GameConfig from './GameConfig';
-import Player from './player';
-
 class GameBoard {
     constructor(rows, cols) {
         this.rows = rows;

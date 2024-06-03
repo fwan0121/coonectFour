@@ -1,4 +1,4 @@
-import Player from '../../src/Models/player.js'; 
+import Player from 'player.js'; 
 
 describe('Player', () => {
     test('should create a Player with name and color', () => {

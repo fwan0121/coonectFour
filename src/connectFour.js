@@ -1,9 +1,24 @@
-import ConnectFourModel from './Models/ConnectFourModel';
-import GameView from './Views/GameView';
-import ConnectFourController from './Controllers/Controller';
+// import ConnectFourModel from './models/connectfour-model';
+// import GameConfig from './models/game-config';
+// import GameBoard from './models/game-board';
+// import Player from './models/player';
+// import GameView from '/views/game-view.js';
+// import ConnectFourController from './controllers/controller.js';
+import GameConfig from './models/game-config.js';
+import GameBoard from './models/game-board.js';
+import Player from './models/player.js';
+import ConnectFourModel from './models/connectfour-model.js';
+import GameView from './views/game-view.js';
+import ConnectFourController from './controllers/controller.js';
 
 function startGame() {
-    const model = new ConnectFourModel();
+    const config = new GameConfig();
+    const board = new GameBoard(config.rows, config.cols);
+    const players = [
+        new Player('Player 1', 'yellow'),
+        new Player('Player 2', 'blue')
+    ];
+    const model = new ConnectFourModel(config, board, players);
     const view = new GameView();
     const controller = new ConnectFourController(model, view);
 }

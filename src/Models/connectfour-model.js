@@ -1,15 +1,8 @@
-import GameConfig from './GameConfig';
-import GameBoard from './GameBoard';
-import Player from './player';
-
 class ConnectFourModel {
-    constructor() {
-        this.config = new GameConfig();
-        this.board = new GameBoard(this.config.rows, this.config.cols);
-        this.players = [
-            new Player('Player 1', 'yellow'),
-            new Player('Player 2', 'blue')
-        ];
+    constructor(config, board, players) {
+        this.config = config;
+        this.board = board;
+        this.players = players;
         this.currentPlayerIndex = 0;
         this.count = 4;
         this.isWin = false;
@@ -85,3 +78,6 @@ class ConnectFourModel {
 }
 
 export default ConnectFourModel;
+
+
+// folder use lowercase
