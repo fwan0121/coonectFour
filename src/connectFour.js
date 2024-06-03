@@ -1,9 +1,3 @@
-// import ConnectFourModel from './models/connectfour-model';
-// import GameConfig from './models/game-config';
-// import GameBoard from './models/game-board';
-// import Player from './models/player';
-// import GameView from '/views/game-view.js';
-// import ConnectFourController from './controllers/controller.js';
 import GameConfig from './models/game-config.js';
 import GameBoard from './models/game-board.js';
 import Player from './models/player.js';
