@@ -18,14 +18,15 @@
   },
   "scripts": {
     "test": "jest",
-    "start": "npx parcel index.html"
+    "start": "npx parcel index.html",
+    "build": "parcel build index.html"
   },
   "jest": {
     "transform": {
       "^.+\\.jsx?$": "babel-jest"
     },
     "roots": [
-      "<rootDir>"
+      "<rootDir>/src"
     ],
     "moduleFileExtensions": [
       "js",

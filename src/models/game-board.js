@@ -10,10 +10,16 @@ class GameBoard {
     }
 
     getCell(row, col) {
+        if (row < 0 || row >= this.rows || col < 0 || col >= this.cols) {
+            throw new Error(`row or col is out of the range`);
+        }
         return this.board[row][col];
     }
 
     setCell(row, col, value) {
+        if (row < 0 || row >= this.rows || col < 0 || col >= this.cols) {
+            throw new Error(`row or col is out of the range`);
+        }
         this.board[row][col] = value;
     }
 

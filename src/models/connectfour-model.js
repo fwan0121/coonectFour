@@ -19,21 +19,21 @@ class ConnectFourModel {
     placePlayer(col) {
         let placed = this.board.isFullColumn(col);
         let row;
-        for (row = this.config.rows - 1; row >= 0; row--) { 
-            if (this.board.getCell(row, col) === " ") {
-                this.board.setCell(row, col, this.getCurrentPlayer().color);
-                placed = true;
-                break;                
+        if (placed) {
+            return null;
+        } else {
+            for (row = this.config.rows - 1; row >= 0; row--) { 
+                if (this.board.getCell(row, col) === " ") {
+                    this.board.setCell(row, col, this.getCurrentPlayer().color);
+                    return { row, col, player: this.getCurrentPlayer() };
+                }
             }
         }
-        if (!placed) {
-            return null
-        }
-        return { row, col, player: this.getCurrentPlayer() };
+        return null;
     }
 
     resetGame() {
-        this.board.reset();
+        this.board.reset(this.config.rows, this.config.cols);
         this.currentPlayerIndex = 0;
         this.isWin = false;
     }
