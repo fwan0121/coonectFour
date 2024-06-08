@@ -38,6 +38,18 @@ class ConnectFourModel {
         this.isWin = false;
     }
 
+    /**
+     * Checks if there are `this.count = 4 ` consecutive pieces of the given player 
+     * in a line starting from (row, col) in the direction specified by (rowDif, colDif).
+     * 
+     * @param {number} row - The starting row index.
+     * @param {number} col - The starting column index.
+     * @param {number} rowDif - The row difference for each step in the line.
+     * @param {number} colDif - The column difference for each step in the line.
+     * @param {Object} player - The player object containing the color of the player's pieces.
+     * @returns {boolean} - True if there are `this.count = 4 ` consecutive pieces of the given player, false otherwise.
+     */
+
     checkLine(row, col, rowDif, colDif, player) {
         let nRow = row;
         let nCol = col;
@@ -59,17 +71,31 @@ class ConnectFourModel {
         return true;
     }
 
+    /**
+     * Checks if the given player has won the game starting from the given cell.
+     * This checks for horizontal, vertical, diagonal, and anti-diagonal lines.
+     * 
+     * @param {number} row - The starting row index.
+     * @param {number} col - The starting column index.
+     * @param {Object} player - The player object containing the color of the player's pieces.
+     * @returns {boolean} - True if the player has won, false otherwise.
+     */
+
     checkWin(row, col, player) {
          //check horizontal
          if (this.checkLine(row, col, 0, 1, player) || this.checkLine(row, col, 0, -1, player)){
             return true;
         }
         //check vertical
-        if (this.checkLine(row, col, 1, 0, player)) {
+        if (this.checkLine(row, col, 1, 0, player) || this.checkLine(row, col, -1, 0, player)) {
             return true;
         }
-        // //check diagonal
-        if (this.checkLine(row, col, 1, 1, player) || this.checkLine(row, col, 1, -1, player)) {
+        // check diagonal bottom-left to top-right
+        if (this.checkLine(row, col, 1, 1, player) || this.checkLine(row, col, -1, 1, player)) {
+            return true;
+        }
+        // check diagonal bottom-right to top-left
+        if (this.checkLine(row, col, 1, -1, player) || this.checkLine(row, col, -1, -1, player)) {
             return true;
         }
         return false;
