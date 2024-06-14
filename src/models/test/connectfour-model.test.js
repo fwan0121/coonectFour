@@ -1,9 +1,9 @@
 import fs from 'fs';
 import path from 'path';
-import GameConfig from './game-config.js';
-import GameBoard from './game-board.js';
-import Player from './player.js';
-import ConnectFourModel from './connectfour-model.js';
+import GameConfig from '../game-config.js';
+import GameBoard from '../game-board.js';
+import Player from '../player.js';
+import ConnectFourModel from '../connectfour-model.js';
 
 const readBoardFromFile = (filePath) => {
     const fileContent = fs.readFileSync(filePath, 'utf-8');
@@ -93,42 +93,42 @@ describe('ConnectFourModel', () => {
 
     describe('checkWin', () => {
         test('should check horizontal win', () => {
-            const boardState = readBoardFromFile(path.resolve(__dirname, '../file/horizontal-01.txt'));
+            const boardState = readBoardFromFile(path.resolve(__dirname, '../../mocks/horizontal-01.txt'));
             setBoardState(model.board, boardState);
             const res = model.checkWin(5, 0, players[0]);
             expect(res).toBe(true);
         })
 
         test('should check vertical line', () => {
-            const boardState = readBoardFromFile(path.resolve(__dirname, '../file/vertical-01.txt'));
+            const boardState = readBoardFromFile(path.resolve(__dirname, '../../mocks/vertical-01.txt'));
             setBoardState(model.board, boardState);
             const res = model.checkWin(5, 1, players[0]);
             expect(res).toBe(true);
         });
 
         test('should check diagonal win bottom-left to top-right', () => {
-            const boardState = readBoardFromFile(path.resolve(__dirname, '../file/diagonal-bltr-01.txt'));
+            const boardState = readBoardFromFile(path.resolve(__dirname, '../../mocks/diagonal-bltr-01.txt'));
             setBoardState(model.board, boardState);
             const res = model.checkWin(5, 0, players[0]);
             expect(res).toBe(true);
         });
         
         test('should check diagonal win top-left to bottom-right', () => {
-            const boardState = readBoardFromFile(path.resolve(__dirname, '../file/diagonal-bltr-01.txt'));
+            const boardState = readBoardFromFile(path.resolve(__dirname, '../../mocks/diagonal-bltr-01.txt'));
             setBoardState(model.board, boardState);
             const res = model.checkWin(2, 3, players[0]);
             expect(res).toBe(true);
         });
         
         test('should check diagonal win bottom-right to top-left', () => {
-            const boardState = readBoardFromFile(path.resolve(__dirname, '../file/diagonal-brtl-01.txt'));
+            const boardState = readBoardFromFile(path.resolve(__dirname, '../../mocks/diagonal-brtl-01.txt'));
             setBoardState(model.board, boardState);
             const res = model.checkWin(5, 4, players[0]);
             expect(res).toBe(true);
         });
         
         test('should check diagonal win top-right to bottom-left', () => {
-            const boardState = readBoardFromFile(path.resolve(__dirname, '../file/diagonal-brtl-01.txt'));
+            const boardState = readBoardFromFile(path.resolve(__dirname, '../../mocks/diagonal-brtl-01.txt'));
             setBoardState(model.board, boardState);
             const res = model.checkWin(2, 1, players[0]);
             expect(res).toBe(true);

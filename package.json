@@ -23,11 +23,13 @@
     "build": "parcel build index.html"
   },
   "jest": {
+    "testEnvironment": "jsdom",
     "transform": {
       "^.+\\.jsx?$": "babel-jest"
     },
     "roots": [
-      "<rootDir>/src"
+      "<rootDir>/src/models/test",
+      "<rootDir>/src/controllers/test"
     ],
     "moduleFileExtensions": [
       "js",

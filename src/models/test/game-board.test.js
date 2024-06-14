@@ -1,4 +1,4 @@
-import GameBoard from './game-board.js'; 
+import GameBoard from '../game-board.js'; 
 
 describe('GameBoard', () => { 
     let gameBoard;

@@ -1,4 +1,4 @@
-import GameConfig from './game-config.js'; 
+import GameConfig from '../game-config.js'; 
 
 describe('GameConfig', () => {
     test('should create a GameConfig with default rows and cols', () => {
