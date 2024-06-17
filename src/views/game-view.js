@@ -19,6 +19,8 @@ class GameView {
                 cell.classList.add('cell');
                 cell.dataset.row = i.toString();
                 cell.dataset.col = j.toString();
+                cell.setAttribute('role', 'gridcell');
+                cell.setAttribute('aria-label', 'empty');
                 cell.textContent = ' ';
                 fragment.append(cell);
             }
@@ -30,6 +32,7 @@ class GameView {
         const cell = document.querySelector(`.cell[data-row="${row}"][data-col="${col}"]`);
         if (cell) {
             cell.style.backgroundColor = color;
+            cell.setAttribute('aria-label', color);
         } else {
             console.error(`Cell at row ${row}, col ${col} not found`);
         }
@@ -60,6 +63,7 @@ class GameView {
             const cells = this.boardElement.querySelectorAll('.cell');
             cells.forEach(cell => {
                 cell.style.backgroundColor = 'white';
+                cell.setAttribute('aria-label', 'empty');
                 cell.textContent = ' ';
             });
         }

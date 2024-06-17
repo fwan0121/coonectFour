@@ -67,7 +67,8 @@ describe('ConnnectFourcontroller', () => {
             updateBoard: jest.fn(),
             showWinner: jest.fn(),
             clearBoard: jest.fn(),
-            renderGameOver: jest.fn()
+            renderGameOver: jest.fn(),
+            highlightColumn: jest.fn()
         }));
 
 
@@ -91,6 +92,7 @@ describe('ConnnectFourcontroller', () => {
     test('should initalise the game', () => {
         jest.spyOn(view, 'renderBoard');
         jest.spyOn(view, 'renderPlayerState');
+        jest.spyOn(view, 'highlightColumn');
         jest.spyOn(view.boardElement, 'addEventListener');
         jest.spyOn(view.resetButton, 'addEventListener');
 
@@ -98,7 +100,8 @@ describe('ConnnectFourcontroller', () => {
 
         expect(view.renderBoard).toHaveBeenCalledWith(config.rows, config.cols);
         expect(view.renderPlayerState).toHaveBeenCalledWith(model.getCurrentPlayer());
-        expect(view.boardElement.addEventListener).toHaveBeenCalledTimes(1);
+        expect(view.highlightColumn).toHaveBeenCalledWith(controller.currentCol);
+        expect(view.boardElement.addEventListener).toHaveBeenCalledTimes(3); //click, mouseover, mousemove
         expect(view.resetButton.addEventListener).toHaveBeenCalledTimes(1);
     })
 
@@ -148,6 +151,7 @@ describe('ConnnectFourcontroller', () => {
         jest.spyOn(view, 'clearBoard');
         jest.spyOn(view, 'renderBoard');
         jest.spyOn(view, 'renderPlayerState');
+        jest.spyOn(view, 'highlightColumn');
 
         controller.handleReset();
 

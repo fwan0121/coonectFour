@@ -1,6 +1,5 @@
 import GameView from '../game-view.js';
 import { screen } from '@testing-library/dom';
-import '@testing-library/jest-dom';
 
 
 describe('GameView', () => {
@@ -17,23 +16,19 @@ describe('GameView', () => {
 
     test('should render the board correctly', () => {
         view.renderBoard(6, 7);
-        const cells = document.querySelectorAll('.cell');
+        const cells = screen.getAllByRole('gridcell', { name: 'empty' });
         expect(cells.length).toBe(42);
 
         // Ensure boardElement contains the fragment with cells
         const board = screen.getByTestId('board');
-        expect(board.children.length).toBe(42);
-
+        expect(board).toBeInTheDocument();
     });
 
     test('should update the board and color correctly', () => {
-        let row = 0;
-        let col = 0;
-        let color = 'red';
         view.renderBoard(6, 7);
-        view.updateBoard(row, col, color);
-        const cell = document.querySelector(`.cell[data-row="${row}"][data-col="${col}"]`);
-        expect(cell).toHaveStyle(`background-color: ${color}`);
+        view.updateBoard(0, 0, 'red');
+        const cell = screen.getByRole('gridcell', { name: 'red' });
+        expect(cell).toHaveStyle('background-color: red');
     });
 
     test('should set game status correctly', () => {
@@ -48,8 +43,8 @@ describe('GameView', () => {
         expect(gameStatus).toBeInTheDocument();
     });
 
-    test('should render alert when the ame over', () => {
-        jest.spyOn(window, 'alert');
+    test('should render alert when the game over', () => {
+        jest.spyOn(window, 'alert').mockImplementation(() => {});
         view.renderGameOver();
         expect(window.alert).toHaveBeenCalledWith('Game is over, please reset');
     });
