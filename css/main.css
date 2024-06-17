@@ -34,6 +34,10 @@ section {
     border-radius: 50%;
 }
 
+.highlighted-column {
+    background-color: rgba(241, 237, 128, 0.203);
+}
+
 #resetBtn {
     display: block;
     margin: 10px auto;

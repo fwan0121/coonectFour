@@ -1,3 +1,5 @@
+// This is only for demo internal test by using spyOn
+
 import ConnectFourModel from '../../models/connectfour-model.js';
 import GameBoard from '../../models/game-board.js';
 import Player from '../../models/player.js';

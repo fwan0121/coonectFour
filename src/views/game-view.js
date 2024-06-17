@@ -64,6 +64,18 @@ class GameView {
             });
         }
     }
+
+    highlightColumn(col) {
+        const cells = this.boardElement.querySelectorAll('.cell');
+        cells.forEach(cell => {
+            if (parseInt(cell.dataset.col) === col) {
+                cell.classList.add('highlighted-column');
+            } else {
+                cell.classList.remove('highlighted-column');
+            }
+        });
+    }    
+    
 }
 
 export default GameView;
