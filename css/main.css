@@ -1,51 +1,73 @@
 /* main.css */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Arial', sans-serif;
     text-align: center;
-    background-color: #f4f4f4;
+    background-color: #f0f0f0;
     margin: 0;
     padding: 0;
+    color: #333;
 }
 
 h1 {
     margin: 20px 0;
+    font-size: 2em;
+    color: #555;
 }
 
 section {
     display: inline-block;
     margin-top: 20px;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 #board {
     display: grid;
-    gap: 5px;
-    margin: 20px 0;
+    gap: 15px;
+    margin: 20px;
+    grid-template-columns: repeat(7, 40px);
+    justify-content: center;
 }
 
 .cell {
-    width: 30px;
-    height: 30px;
-    background-color: white;
-    border: 1px solid #000;
+    width: 40px;
+    height: 40px;
+    background-color: #ffffff;
+    border: 2px solid #dddddd;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
     border-radius: 50%;
+    transition: background-color 0.3s ease;
 }
 
+
 .highlighted-column {
-    background-color: rgba(241, 237, 128, 0.203);
+    background-color: rgba(241, 237, 128, 0.4);
 }
 
 #resetBtn {
-    display: block;
-    margin: 10px auto;
+    display: inline-block;
+    margin: 20px 10px;
     padding: 10px 20px;
     font-size: 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#resetBtn:hover {
+    background-color: #0056b3;
 }
 
 #gameStatus {
     margin-top: 20px;
-    font-size: 18px;
+    font-size: 20px;
+    color: #555;
 }

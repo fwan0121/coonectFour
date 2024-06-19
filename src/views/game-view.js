@@ -10,7 +10,7 @@ class GameView {
             throw new Error('Element with ID "board" does not exist in the DOM.');
         }
         this.boardElement.innerHTML = '';
-        this.boardElement.style.gridTemplateColumns = `repeat(${cols}, 30px)`;
+        this.boardElement.style.gridTemplateColumns = `repeat(${cols}, 35px)`;
 
         const fragment = document.createDocumentFragment();
         for (let i = 0; i < rows; i++) {
