@@ -5,7 +5,6 @@ This is a Connect Four game implemented in JavaScript using the Model-View-Contr
 ## Table of Contents
 
 - [Features](#features)
-- [Usage](#usage)
 - [Testing](#testing)
 ## Features
 
@@ -13,6 +12,11 @@ This is a Connect Four game implemented in JavaScript using the Model-View-Contr
 - Dynamic grid rendering
 - Detects and announces the winner
 - Allows resetting the game
+- Accessibility features for keyboard navigation and interactions:
+  - Navigate the grid using arrow keys
+  - Drop discs using the Enter key
+  - Visual highlighting of the current column during navigation
+
 
 ## Testing
 
