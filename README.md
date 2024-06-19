@@ -112,11 +112,10 @@ src/
 |
 |-- views/
 |   |-- game-view.js
+|   |-- test/
+|       |-- game-view.test.js
 |
 |-- tests/
-|   |-- game-view.test.js
-|
+|   |-- connectFour.test.js
 |-- connectFour.js
-|-- connectFour.test.js
 |-- index.html
-|-- styles.css
