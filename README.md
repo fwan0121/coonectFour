@@ -58,7 +58,10 @@ This is a Connect Four game implemented in JavaScript using the Model-View-Contr
 
 2. To run end-to-end tests, use the following command:
     ```bash
-    npm test
+    npm start
+
+    // open separate terminal 
+    npm run test:e2e
     ```
 
 **Unit Tests (Jest)**
@@ -109,8 +112,10 @@ src/
 |
 |-- views/
 |   |-- game-view.js
-|   |-- test/
-|       |-- game-view.test.js
+|
+|-- tests/
+|   |-- game-view.test.js
+|
 |-- connectFour.js
 |-- connectFour.test.js
 |-- index.html
