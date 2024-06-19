@@ -5,7 +5,11 @@ This is a Connect Four game implemented in JavaScript using the Model-View-Contr
 ## Table of Contents
 
 - [Features](#features)
+- [Installation](#installation)
+- [Usage](#usage)
 - [Testing](#testing)
+- [Project Structure](#project-structure)
+
 ## Features
 
 - Two-player gameplay
@@ -17,8 +21,43 @@ This is a Connect Four game implemented in JavaScript using the Model-View-Contr
   - Drop discs using the Enter key
   - Visual highlighting of the current column during navigation
 
+## Installation
+
+1. Clone the repository:
+    ```bash
+    git clone https://github.com/your-username/connect-four.git
+    cd connect-four
+    ```
+
+2. Install dependencies:
+    ```bash
+    npm install
+    ```
+
+## Usage
+
+1. Start the development server:
+    ```bash
+    npm start
+    ```
+
+2. Open your browser and navigate to `http://localhost:1234`.
+
+
 
 ## Testing
+
+
+1. To run the unit tests, use the following command:
+    ```bash
+    npm test
+    ```
+
+
+2. To run end-to-end tests, use the following command:
+    ```bash
+    npm test
+    ```
 
 **Unit Tests (Jest)**
 
@@ -45,3 +84,32 @@ End-to-end tests are written to ensure the entire application works correctly fr
 - Starting a new game
 - Playing a complete game
 - Resetting the game
+
+
+## Project Structure
+
+```plaintext
+src/
+|-- controllers/
+|   |-- controller.js
+|   |-- test/
+|       |-- controller.test.js
+|
+|-- models/
+|   |-- connectfour-model.js
+|   |-- game-board.js
+|   |-- game-config.js
+|   |-- player.js
+|   |-- test/
+|       |-- connectfour-model.test.js
+|       |-- game-board.test.js
+|       |-- game-config.test.js
+|
+|-- views/
+|   |-- game-view.js
+|   |-- test/
+|       |-- game-view.test.js
+|-- connectFour.js
+|-- connectFour.test.js
+|-- index.html
+|-- styles.css
