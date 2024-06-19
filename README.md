@@ -2,6 +2,8 @@
 
 This is a Connect Four game implemented in JavaScript using the Model-View-Controller (MVC) design pattern. The game allows two players to take turns dropping colored discs into a grid, with the objective of forming a horizontal, vertical, or diagonal line of four discs.
 
+[![image.png](https://i.postimg.cc/Mp8z5XYs/image.png)](https://postimg.cc/w70KTqZJ)
+
 ## Table of Contents
 
 - [Features](#features)
