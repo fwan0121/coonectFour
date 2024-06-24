@@ -5,6 +5,9 @@ import ConnectFourModel from './models/connectfour-model.js';
 import GameView from './views/game-view.js';
 import ConnectFourController from './controllers/controller.js';
 
+/**
+ * Initialises and starts a new game of Connect Four.
+ */
 function startGame() {
     const config = new GameConfig();
     const board = new GameBoard(config.rows, config.cols);
@@ -17,4 +20,5 @@ function startGame() {
     const controller = new ConnectFourController(model, view);
 }
 
+// Start the game when the script is loaded.
 startGame();

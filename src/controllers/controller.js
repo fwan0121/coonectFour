@@ -1,4 +1,14 @@
+/**
+ * @class Controller
+ * @classdesc This class controls the Connect Four game logic, interacting with the model and view.
+ */
+
 class Controller {
+    /**
+     * @constructor
+     * @param {Object} model - The game model.
+     * @param {Object} view - The game view.
+     */
     constructor(model, view) {
         this.model = model;
         this.view = view;
@@ -6,6 +16,9 @@ class Controller {
         this.init();
     }
 
+    /**
+     * Initializes the game by rendering the board, setting the player state, and attaching event listeners.
+     */
     init() {
         this.view.renderBoard(this.model.config.rows, this.model.config.cols);
         this.view.renderPlayerState(this.model.getCurrentPlayer());
@@ -13,6 +26,9 @@ class Controller {
         this.view.highlightColumn(this.currentCol);
     }
 
+    /**
+     * Attaches event listeners to the board and reset button.
+     */
     attachEventListeners() {
         this.view.boardElement.addEventListener('click', event => {
             if(this.model.isWin) {
@@ -44,8 +60,10 @@ class Controller {
         document.addEventListener('keydown', event => this.handleKeyPress(event));
     }
 
-    
-    
+    /**
+     * Handles key press events to allow navigation and selection using keyboard.
+     * @param {KeyboardEvent} event - The keyboard event.
+     */
     handleKeyPress(event) {
         switch (event.key) {
             case 'ArrowLeft':
@@ -60,6 +78,11 @@ class Controller {
         }
         this.view.highlightColumn(this.currentCol);
     }
+
+    /**
+     * Handles a player's move by placing a disc in the specified column.
+     * @param {number} col - The column index where the player wants to place a disc.
+     */
 
     handleMove(col) {
         const result = this.model.placePlayer(col);
@@ -78,6 +101,9 @@ class Controller {
         this.view.renderPlayerState(this.model.getCurrentPlayer());
     }
 
+    /**
+     * Resets the game by clearing the board and re-initializing the game state.
+     */
     handleReset() {
         this.model.resetGame();
         this.view.clearBoard();

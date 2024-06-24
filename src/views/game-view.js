@@ -1,3 +1,7 @@
+/**
+ * @class GameView
+ * @classdesc This class represents the view for the Connect Four game, managing the UI.
+ */
 class GameView {
     constructor() {
         this.boardElement = document.getElementById('board');
@@ -5,6 +9,11 @@ class GameView {
         this.resetButton = document.getElementById('resetBtn');
     }
 
+    /**
+     * Renders the game board.
+     * @param {number} rows - The number of rows in the board.
+     * @param {number} cols - The number of columns in the board.
+     */
     renderBoard(rows, cols) {
         if (!this.boardElement) {
             throw new Error('Element with ID "board" does not exist in the DOM.');
@@ -28,6 +37,12 @@ class GameView {
         this.boardElement.appendChild(fragment);
     }
 
+    /**
+     * Updates the board with the player's move.
+     * @param {number} row - The row index of the move.
+     * @param {number} col - The column index of the move.
+     * @param {string} color - The color of the player's disc.
+     */
     updateBoard(row, col, color) {
         const cell = document.querySelector(`.cell[data-row="${row}"][data-col="${col}"]`);
         if (cell) {
@@ -38,6 +53,10 @@ class GameView {
         }
     }
 
+    /**
+     * Sets the game status message.
+     * @param {string} message - The status message to display.
+     */
     setGameStatus(message) {
         if (this.gameStatusElement) {
             this.gameStatusElement.textContent = message;
@@ -46,18 +65,33 @@ class GameView {
         }
     }
 
+    /**
+     * Displays the winner of the game.
+     * @param {string} winner - The name of the winning player.
+     * @param {string} color - The color of the winning player's discs.
+     */
     showWinner(winner, color) {
         this.setGameStatus(`${winner} ${color} wins!!`);
     }
 
+    /**
+     * Renders the game over message.
+     */
     renderGameOver() {
         alert('Game is over, please reset');
     }
 
+    /**
+     * Renders the current player's turn.
+     * @param {Object} player - The current player.
+     */
     renderPlayerState(player) {
         this.setGameStatus(`${player.name} ${player.color}'s turn`);
     }
 
+    /**
+     * Clears the game board.
+     */
     clearBoard() {
         if(this.boardElement) {
             const cells = this.boardElement.querySelectorAll('.cell');
@@ -69,6 +103,10 @@ class GameView {
         }
     }
 
+    /**
+     * Highlights the column where the player place a disc.
+     * @param {number} col - The column index to highlight.
+     */
     highlightColumn(col) {
         const cells = this.boardElement.querySelectorAll('.cell');
         cells.forEach(cell => {

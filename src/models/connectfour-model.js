@@ -1,4 +1,15 @@
+/**
+ * @class ConnectFourModel
+ * @classdesc This class represents the model for the Connect Four game, managing the game state.
+ */
 class ConnectFourModel {
+
+    /**
+     * @constructor
+     * @param {Object} config - The game configuration.
+     * @param {Object} board - The game board.
+     * @param {Array} players - The list of players.
+     */
     constructor(config, board, players) {
         this.config = config;
         this.board = board;
@@ -8,14 +19,26 @@ class ConnectFourModel {
         this.isWin = false;
     }
 
+    /**
+     * Gets the current player.
+     * @returns {Object} The current player.
+     */
     getCurrentPlayer() {
         return this.players[this.currentPlayerIndex];
     }
 
+    /**
+     * Switches to the next player.
+     */
     switchPlayer() {
         this.currentPlayerIndex = 1 - this.currentPlayerIndex;
     }
-    
+
+    /**
+     * Places the current player's disc in the specified column.
+     * @param {number} col - The column index.
+     * @returns {Object|null} The result of the move or null if the column is full.
+     */
     placePlayer(col) {
         let placed = this.board.isFullColumn(col);
         let row;
@@ -32,6 +55,9 @@ class ConnectFourModel {
         return null;
     }
 
+    /**
+     * Resets the game state.
+     */
     resetGame() {
         this.board.reset(this.config.rows, this.config.cols);
         this.currentPlayerIndex = 0;
