@@ -3,7 +3,7 @@ const { test, expect } = require('@playwright/test');
 
 test.describe('Connect Four Game', () => {
     test.beforeEach(async ({ page }) => {
-        await page.goto('http://localhost:1234');
+        await page.goto('/');
     });
 
     test('has to display the title', async ({ page }) => {
