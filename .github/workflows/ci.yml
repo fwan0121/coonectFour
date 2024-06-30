@@ -31,11 +31,10 @@ jobs:
         env:
           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
         run: |
-          echo "machine api.heroku.com" > ~/.netrc
-          echo "  login $HEROKU_API_KEY" >> ~/.netrc
-          echo "machine git.heroku.com" >> ~/.netrc
-          echo "  login $HEROKU_API_KEY" >> ~/.netrc
-          git remote add heroku https://git.heroku.com/my-connectfour-staging.git
+          echo "${{ secrets.CI_CD_SSH_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -H heroku.com >> ~/.ssh/known_hosts
+          git remote add heroku git@heroku.com:my-connectfour-staging.git
           git push heroku main
 
   e2e:
@@ -68,9 +67,8 @@ jobs:
         env:
           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
         run: |
-          echo "machine api.heroku.com" > ~/.netrc
-          echo "  login $HEROKU_API_KEY" >> ~/.netrc
-          echo "machine git.heroku.com" >> ~/.netrc
-          echo "  login $HEROKU_API_KEY" >> ~/.netrc
-          git remote add heroku https://git.heroku.com/my-connectfour-production.git
+          echo "${{ secrets.CI_CD_SSH_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -H heroku.com >> ~/.ssh/known_hosts
+          git remote add heroku git@heroku.com:my-connectfour-production.git
           git push heroku main
