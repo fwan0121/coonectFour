@@ -10,6 +10,7 @@ This is a Connect Four game implemented in JavaScript using the Model-View-Contr
 - [Installation](#installation)
 - [Usage](#usage)
 - [Testing](#testing)
+- [Deployment](#deployment)
 - [Project Structure](#project-structure)
 
 ## Features
@@ -90,6 +91,29 @@ End-to-end tests are written to ensure the entire application works correctly fr
 - Playing a complete game
 - Resetting the game
 
+## Deployment
+
+To deploy this application, we use Heroku and GitHub Actions for a CI/CD pipeline. The deployment process includes the following steps:
+
+1. **Build** - Build the project using Parcel:
+    ```bash
+    npm run build
+    ```
+
+2. **Run Unit Tests** - Execute unit tests using Jest:
+    ```bash
+    npm test
+    ```
+
+3. **Deploy to Staging** - Deploy the built application to a staging environment on Heroku. The `ci.yml` GitHub Actions workflow handles this step.
+
+4. **Run End-to-End Tests** - Execute end-to-end tests using Playwright on the staging environment:
+    ```bash
+    npm run test:e2e
+    ```
+
+5. **Deploy to Production** - If all tests pass, deploy the application to the production environment on Heroku.
+
 
 ## Project Structure
 
@@ -115,7 +139,10 @@ src/
 |   |-- test/
 |       |-- game-view.test.js
 |
-|-- tests/
+|-- tests/e2e
 |   |-- connectFour.test.js
+|
 |-- connectFour.js
 |-- index.html
+|-- css
+|   |-- main.css
