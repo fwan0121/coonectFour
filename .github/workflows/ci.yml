@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - main
-  workflow_dispatch:
 
 jobs:
   build:
@@ -12,10 +11,10 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v2
 
       - name: Set up Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v2
         with:
           node-version: '20'
 
@@ -28,27 +27,37 @@ jobs:
       - name: Run unit tests
         run: npm test
 
-      - name: Deploy to staging
-        env:
-          HEROKU_SSH_KEY: ${{ secrets.HEROKU_SSH_KEY }}
-          HEROKU_APP_NAME_STAGING: ${{ secrets.HEROKU_APP_NAME_STAGING }}
-        run: |
-          mkdir -p ~/.ssh
-          echo "$HEROKU_SSH_KEY" > ~/.ssh/id_rsa
-          chmod 600 ~/.ssh/id_rsa
-          ssh-keyscan -H heroku.com >> ~/.ssh/known_hosts
-          git remote add heroku git@heroku.com:${{ env.HEROKU_APP_NAME_STAGING }}.git
-          git push heroku main
-
-  e2e:
+  deploy-staging:
     needs: build
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v2
+
+      - name: Set up SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.HEROKU_SSH_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -H heroku.com >> ~/.ssh/known_hosts
+
+      - name: Add Heroku remote
+        run: git remote add heroku git@heroku.com:${{ secrets.HEROKU_APP_NAME_STAGING }}.git
+
+      - name: Deploy to Heroku Staging
+        run: git push heroku main
+
+  e2e:
+    needs: deploy-staging
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
       - name: Set up Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v2
         with:
           node-version: '20'
 
@@ -60,27 +69,23 @@ jobs:
         env:
           BASE_URL: ${{ secrets.STAGING_BASE_URL }}
 
-  deploy:
+  deploy-production:
     needs: e2e
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v2
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '20'
-
-      - name: Deploy to production
-        env:
-          HEROKU_SSH_KEY: ${{ secrets.HEROKU_SSH_KEY }}
-          HEROKU_APP_NAME_PRODUCTION: ${{ secrets.HEROKU_APP_NAME_PRODUCTION }}
+      - name: Set up SSH
         run: |
           mkdir -p ~/.ssh
-          echo "$HEROKU_SSH_KEY" > ~/.ssh/id_rsa
+          echo "${{ secrets.HEROKU_SSH_KEY }}" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
           ssh-keyscan -H heroku.com >> ~/.ssh/known_hosts
-          git remote add heroku git@heroku.com:${{ env.HEROKU_APP_NAME_PRODUCTION }}.git
-          git push heroku main
+
+      - name: Add Heroku remote
+        run: git remote add heroku git@heroku.com:${{ secrets.HEROKU_APP_NAME_PRODUCTION }}.git
+
+      - name: Deploy to Heroku Production
+        run: git push heroku main
