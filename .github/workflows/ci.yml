@@ -30,13 +30,15 @@ jobs:
       - name: Deploy to staging
         env:
           HEROKU_SSH_KEY: ${{ secrets.HEROKU_SSH_KEY }}
-          HEROKU_APP_NAME_STAGING: my-connectfour-staging
+          HEROKU_APP_NAME_STAGING: ${{ secrets.HEROKU_APP_NAME_STAGING }}
         run: |
+          mkdir -p ~/.ssh
           echo "$HEROKU_SSH_KEY" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
           ssh-keyscan -H heroku.com >> ~/.ssh/known_hosts
           git remote add heroku git@heroku.com:${{ env.HEROKU_APP_NAME_STAGING }}.git
           git push heroku main
+
   e2e:
     needs: build
     runs-on: ubuntu-latest
@@ -64,10 +66,11 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Deploy to production
-        env:
+       env:
           HEROKU_SSH_KEY: ${{ secrets.HEROKU_SSH_KEY }}
-          HEROKU_APP_NAME_PRODUCTION: my-connectfour-production
+          HEROKU_APP_NAME_PRODUCTION: ${{ secrets.HEROKU_APP_NAME_PRODUCTION }}
         run: |
+          mkdir -p ~/.ssh
           echo "$HEROKU_SSH_KEY" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
           ssh-keyscan -H heroku.com >> ~/.ssh/known_hosts
