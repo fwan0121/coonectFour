@@ -1,0 +1,26 @@
+{
+    "name": "connect-four",
+    "description": "A Connect Four game application.",
+    "scripts": {
+      "postdeploy": "npm run build",
+      "test": "npm run test"
+    },
+    "env": {
+      "BASE_URL": {
+        "required": true
+      }
+    },
+    "formation": {
+      "web": {
+        "quantity": 1,
+        "size": "standard-1x"
+      }
+    },
+    "addons": [],
+    "buildpacks": [
+      {
+        "url": "heroku/nodejs"
+      }
+    ]
+  }
+  
