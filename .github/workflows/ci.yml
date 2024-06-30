@@ -28,12 +28,11 @@ jobs:
         run: npm test
 
       - name: Deploy to staging
-        uses: akhileshns/heroku-deploy@v3.12.12
-        with:
-          heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
-          heroku_app_name: ${{ secrets.HEROKU_APP_NAME_STAGING }}
-          heroku_email: fwan0121@gmail.com
-          branch: main
+       env:
+          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+        run: |
+          git remote add heroku https://git.heroku.com/${{ secrets.HEROKU_APP_NAME_STAGING }}.git
+          git push heroku main
 
   e2e:
     needs: build
@@ -62,9 +61,8 @@ jobs:
         uses: actions/checkout@v2
 
        - name: Deploy to production
-        uses: akhileshns/heroku-deploy@v3.12.12
-        with:
-          heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
-          heroku_app_name: ${{ secrets.HEROKU_APP_NAME_PRODUCTION }}
-          heroku_email: fwan0121@gmail.com
-          branch: main
+        env:
+          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+        run: |
+          git remote add heroku https://git.heroku.com/${{ secrets.HEROKU_APP_NAME_PRODUCTION }}.git
+          git push heroku main
