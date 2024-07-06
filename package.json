@@ -5,7 +5,7 @@
   "scripts": {
     "test": "jest",
     "start": "node index.js",
-    "build": "npm install && npx parcel build index.html",
+    "build": "npm install",
     "test:e2e": "playwright test",
     "heroku-postbuild": "npm install && npm run build"
   },
@@ -38,9 +38,9 @@
       "^.+\\.jsx?$": "babel-jest"
     },
     "roots": [
-      "<rootDir>/src/models/test",
-      "<rootDir>/src/controllers/test",
-      "<rootDir>/src/views/test"
+      "<rootDir>/public/src/models/test",
+      "<rootDir>/public/src/controllers/test",
+      "<rootDir>/public/src/views/test"
     ],
     "moduleFileExtensions": [
       "js",
