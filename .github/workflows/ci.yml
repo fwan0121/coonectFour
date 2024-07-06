@@ -26,21 +26,19 @@ jobs:
         with:
           branch: "main"
           heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
-          heroku_app_name: my-connectfour-staging
-          heroku_email: fwan0121@gmail.com
-
+          heroku_app_name: ${{ secrets.HEROKU_APP_NAME_STAGING }}
+          heroku_email: ${{ secrets.HEROKU_EMAIL }}
+      
   e2e:
     needs: deploy-staging
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '20'
       - name: Install dependencies
         run: npm install
+      - name: Install playwrigt browser
+        run: npx playwright install
       - name: Run end-to-end tests
         run: npm run test:e2e
         env:
@@ -58,4 +56,3 @@ jobs:
           heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
           heroku_app_name: ${{ secrets.HEROKU_APP_NAME_PRODUCTION }}
           heroku_email: ${{ secrets.HEROKU_EMAIL }}
-          procfile: "web: npm run build && npx serve -s dist"
