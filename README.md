@@ -97,23 +97,14 @@ End-to-end tests are written to ensure the entire application works correctly fr
 
 To deploy this application, we use Heroku and GitHub Actions for a CI/CD pipeline. The deployment process includes the following steps:
 
-1. **Build** - Build the project using Parcel:
-    ```bash
-    npm run build
-    ```
+1. **Build** - Build the project
 
-2. **Run Unit Tests** - Execute unit tests using Jest:
-    ```bash
-    npm test
-    ```
+2. **Run Unit Tests** - Execute unit tests using Jest
 
 3. **Deploy to Staging** - Deploy the built application to a staging environment on Heroku. The `ci.yml` GitHub Actions workflow handles this step.
 [Staging](https://my-connectfour-staging-fb1eec8bb235.herokuapp.com/)
 
-4. **Run End-to-End Tests** - Execute end-to-end tests using Playwright on the staging environment:
-    ```bash
-    npm run test:e2e
-    ```
+4. **Run End-to-End Tests** - Execute end-to-end tests using Playwright on the staging environment
 
 5. **Deploy to Production** - If all tests pass, deploy the application to the production environment on Heroku.
 [Production](https://my-connectfour-staging-fb1eec8bb235.herokuapp.com/)
