@@ -11,19 +11,19 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v2
 
       - name: Set up Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v2
         with:
           node-version: '20'
-
+      
       - name: Install dependencies
         run: npm install
-
+      
       - name: Build
         run: npm run build
-
+      
       - name: Run unit tests
         run: npm test
 
@@ -46,7 +46,7 @@ jobs:
             login $HEROKU_EMAIL
             password $HEROKU_API_KEY
           EOF
-          git remote add heroku git@heroku.com:${{ secrets.HEROKU_APP_NAME_STAGING }}.git
+          git remote add heroku git@heroku.com:${{ env.HEROKU_APP_NAME_STAGING }}.git
           git push heroku main
 
   e2e:
@@ -55,16 +55,16 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
-
+        uses: actions/checkout@v2
+      
       - name: Set up Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v2
         with:
           node-version: '20'
-
+      
       - name: Install dependencies
         run: npm install
-
+      
       - name: Run end-to-end tests
         run: npm run test:e2e
         env:
@@ -76,8 +76,8 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
-
+        uses: actions/checkout@v2
+      
       - name: Deploy to production
         env:
           HEROKU_SSH_KEY: ${{ secrets.HEROKU_SSH_KEY }}
@@ -97,5 +97,5 @@ jobs:
             login $HEROKU_EMAIL
             password $HEROKU_API_KEY
           EOF
-          git remote add heroku git@heroku.com:${{ secrets.HEROKU_APP_NAME_PRODUCTION }}.git
+          git remote add heroku git@heroku.com:${{ env.HEROKU_APP_NAME_PRODUCTION }}.git
           git push heroku main
