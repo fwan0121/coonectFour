@@ -6,7 +6,7 @@
     "start": "npx parcel index.html",
     "build": "parcel build index.html",
     "test:e2e": "playwright test",
-    "heroku-postbuild": "npm install && npm run build",
+    "heroku-postbuild": "npm install --only=dev && npm run build",
     "ci:build": "npm run build",
     "ci:test:unit": "npm test",
     "ci:test:e2e": "npm run test:e2e"
