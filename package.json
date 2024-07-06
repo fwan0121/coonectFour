@@ -3,13 +3,10 @@
   "version": "1.0.0",
   "scripts": {
     "test": "jest",
-    "start": "npx parcel index.html",
-    "build": "parcel build index.html",
+    "start": "node index.js",
+    "build": "npm install && npx parcel build index.html",
     "test:e2e": "playwright test",
-    "heroku-postbuild": "npm install && npm run build",
-    "ci:build": "npm run build",
-    "ci:test:unit": "npm test",
-    "ci:test:e2e": "npm run test:e2e"
+    "heroku-postbuild": "npm install && npm run build"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.2.2",
