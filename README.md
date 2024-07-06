@@ -2,7 +2,7 @@
 
 This is a Connect Four game implemented in JavaScript using the Model-View-Controller (MVC) design pattern. The game allows two players to take turns dropping colored discs into a grid, with the objective of forming a horizontal, vertical, or diagonal line of four discs.
 
-[Link](https://my-connectfour-staging-fb1eec8bb235.herokuapp.com/)
+[Link](https://my-connectfour-production-861f880b6b83.herokuapp.com/)
 
 [![image.png](https://i.postimg.cc/Mp8z5XYs/image.png)](https://postimg.cc/w70KTqZJ)
 
@@ -107,7 +107,7 @@ To deploy this application, we use Heroku and GitHub Actions for a CI/CD pipelin
 4. **Run End-to-End Tests** - Execute end-to-end tests using Playwright on the staging environment
 
 5. **Deploy to Production** - If all tests pass, deploy the application to the production environment on Heroku.
-[Production](https://my-connectfour-staging-fb1eec8bb235.herokuapp.com/)
+[Production](https://my-connectfour-production-861f880b6b83.herokuapp.com/)
 
 
 ## Project Structure
