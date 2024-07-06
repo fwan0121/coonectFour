@@ -17,6 +17,7 @@ jobs:
         run: npm test
 
   deploy-staging:
+    needs: unit-test
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
