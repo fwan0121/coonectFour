@@ -1,4 +1,3 @@
-/* main.css */
 body {
     font-family: 'Arial', sans-serif;
     text-align: center;
@@ -25,17 +24,17 @@ section {
 
 #board {
     display: grid;
-    gap: 15px;
-    margin: 20px;
-    grid-template-columns: repeat(7, 40px);
+    gap: 1vw;
+    margin: 2vw;
+    grid-template-columns: repeat(7, 10vw);
     justify-content: center;
 }
 
 .cell {
-    width: 40px;
-    height: 40px;
+    width: 2vw;
+    height: 2vw;
     background-color: #ffffff;
-    border: 2px solid #dddddd;
+    border: 0.2vw solid #dddddd;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -44,16 +43,15 @@ section {
     transition: background-color 0.3s ease;
 }
 
-
 .highlighted-column {
     background-color: rgba(241, 237, 128, 0.4);
 }
 
 #resetBtn {
     display: inline-block;
-    margin: 20px 10px;
-    padding: 10px 20px;
-    font-size: 16px;
+    margin: 2vw 1vw;
+    padding: 1vw 2vw;
+    font-size: 1.6vw;
     background-color: #007bff;
     color: white;
     border: none;
@@ -67,7 +65,95 @@ section {
 }
 
 #gameStatus {
-    margin-top: 20px;
-    font-size: 20px;
+    margin-top: 2vw;
+    font-size: 2vw;
     color: #555;
 }
+
+@media (max-width: 1200px) {
+    #board {
+        grid-template-columns: repeat(7, 35px);
+        gap: 10px;
+    }
+
+    .cell {
+        width: 35px;
+        height: 35px;
+    }
+}
+
+@media (max-width: 768px) {
+    #board {
+        grid-template-columns: repeat(7, 30px);
+        gap: 8px;
+    }
+
+    .cell {
+        width: 30px;
+        height: 30px;
+    }
+
+    h1 {
+        font-size: 1.75em;
+    }
+
+    #resetBtn {
+        font-size: 14px;
+        padding: 8px 16px;
+    }
+
+    #gameStatus {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 600px) {
+    h1 {
+        font-size: 1.5em;
+    }
+
+    #board {
+        grid-template-columns: repeat(7, 12vw);
+    }
+
+    .cell {
+        width: 12vw;
+        height: 12vw;
+        border: 0.6vw solid #dddddd;
+    }
+
+    #resetBtn {
+        font-size: 2vw;
+        padding: 2vw 4vw;
+    }
+
+    #gameStatus {
+        font-size: 4vw;
+    }
+}
+
+
+@media (max-width: 480px) {
+    #board {
+        grid-template-columns: repeat(7, 25px);
+        gap: 5px;
+    }
+
+    .cell {
+        width: 25px;
+        height: 25px;
+    }
+
+    h1 {
+        font-size: 1.5em;
+    }
+
+    #resetBtn {
+        font-size: 12px;
+        padding: 6px 12px;
+    }
+
+    #gameStatus {
+        font-size: 16px;
+    }
+} 
