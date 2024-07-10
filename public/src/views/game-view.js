@@ -60,6 +60,7 @@ class GameView {
     setGameStatus(message) {
         if (this.gameStatusElement) {
             this.gameStatusElement.textContent = message;
+            this.gameStatusElement.setAttribute('aria-live', 'polite');
         } else {
             console.warn('Warning: Element with ID "gameStatus" not found');
         }
@@ -72,6 +73,9 @@ class GameView {
      */
     showWinner(winner, color) {
         this.setGameStatus(`${winner} ${color} wins!!`);
+        this.gameStatusElement.setAttribute('role', 'alert');
+        this.gameStatusElement.setAttribute('aria-live', 'assertive');
+        this.gameStatusElement.focus();
     }
 
     /**

@@ -65,6 +65,10 @@ class Controller {
      * @param {KeyboardEvent} event - The keyboard event.
      */
     handleKeyPress(event) {
+        if (this.model.isWin) {
+            this.view.renderGameOver();
+            return;
+        }
         switch (event.key) {
             case 'ArrowLeft':
                 this.currentCol = (this.currentCol - 1 + this.model.config.cols) % this.model.config.cols;
