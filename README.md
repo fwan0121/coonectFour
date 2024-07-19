@@ -46,7 +46,7 @@ This is a Connect Four game implemented in JavaScript using the Model-View-Contr
     npm start
     ```
 
-2. Open your browser and navigate to `http://localhost:1234`.
+2. Open your browser and navigate to `http://localhost:3000`.
 
 
 

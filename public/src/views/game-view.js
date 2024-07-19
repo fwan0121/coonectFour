@@ -94,6 +94,27 @@ class GameView {
     }
 
     /**
+     * Announces the move for screen readers.
+     * @param {string} message - The message to announce.
+     */
+    announceMove(message) {
+        const liveRegion = document.createElement('div');
+        liveRegion.setAttribute('aria-live', 'assertive');
+        liveRegion.setAttribute('role', 'alert');
+        liveRegion.style.position = 'absolute';
+        liveRegion.style.left = '-9999px';
+        liveRegion.style.height = '1px';
+        liveRegion.style.width = '1px';
+        liveRegion.textContent = message;
+        document.body.appendChild(liveRegion);
+
+        // Remove the live region after announcing
+        setTimeout(() => {
+            document.body.removeChild(liveRegion);
+        }, 1000);
+    }
+
+    /**
      * Clears the game board.
      */
     clearBoard() {
@@ -113,15 +134,20 @@ class GameView {
      */
     highlightColumn(col) {
         const cells = this.boardElement.querySelectorAll('.cell');
+        let highlighted = false;
         cells.forEach(cell => {
             if (parseInt(cell.dataset.col) === col) {
                 cell.classList.add('highlighted-column');
+                highlighted = true;
             } else {
                 cell.classList.remove('highlighted-column');
             }
         });
-    }    
-    
+        if (highlighted) {
+            this.announceMove(`you placed in column ${col + 1}`);
+        }
+    }
+
 }
 
 export default GameView;
