@@ -144,7 +144,7 @@ class GameView {
             }
         });
         if (highlighted) {
-            this.announceMove(`you placed in column ${col + 1}`);
+            this.announceMove(`you are in column ${col + 1}`);
         }
     }
 

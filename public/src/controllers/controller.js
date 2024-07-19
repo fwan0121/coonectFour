@@ -94,7 +94,7 @@ class Controller {
             alert("Column is full! Please try another one.");
             return;
         }
-
+        this.view.announceMove(`${result.player.color} disc placed in column ${col + 1}`);
         this.view.updateBoard(result.row, result.col, result.player.color);
         if (this.model.checkWin(result.row, result.col, result.player)) {
             this.view.showWinner(result.player.name, result.player.color);
