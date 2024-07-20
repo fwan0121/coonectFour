@@ -68,7 +68,8 @@ describe('ConnnectFourcontroller', () => {
             showWinner: jest.fn(),
             clearBoard: jest.fn(),
             renderGameOver: jest.fn(),
-            highlightColumn: jest.fn()
+            highlightColumn: jest.fn(),
+            announceMove: jest.fn()
         }));
 
 
@@ -136,6 +137,7 @@ describe('ConnnectFourcontroller', () => {
         const result = { row: 5, col: 0, player: players[0] };
         jest.spyOn(view, 'updateBoard');
         jest.spyOn(view, 'showWinner');
+        jest.spyOn(view, 'announceMove');
         jest.spyOn(model, 'placePlayer').mockReturnValue(result);
         jest.spyOn(model, 'checkWin').mockReturnValue(true);
 
@@ -143,6 +145,7 @@ describe('ConnnectFourcontroller', () => {
 
         expect(view.updateBoard).toHaveBeenCalledWith(result.row, result.col, result.player.color);
         expect(view.showWinner).toHaveBeenCalledWith(result.player.name, result.player.color);
+        expect(view.announceMove).toHaveBeenCalledWith(`${result.player.color} disc placed in column ${col + 1}`); // Add this expectation
         expect(model.isWin).toBe(true);
     });
 
