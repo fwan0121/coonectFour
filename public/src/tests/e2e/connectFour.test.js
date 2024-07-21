@@ -8,7 +8,7 @@ test.describe('Connect Four Game', () => {
 
     test('has to display the title', async ({ page }) => {
         const title = await page.locator('h1');
-        await expect(title).toHaveText('Connect four');
+        await expect(title).toHaveText('Connect Four');
     });
 
     test('has start a new game', async ({ page }) => {

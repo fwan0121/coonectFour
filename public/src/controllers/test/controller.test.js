@@ -145,7 +145,7 @@ describe('ConnnectFourcontroller', () => {
 
         expect(view.updateBoard).toHaveBeenCalledWith(result.row, result.col, result.player.color);
         expect(view.showWinner).toHaveBeenCalledWith(result.player.name, result.player.color);
-        expect(view.announceMove).toHaveBeenCalledWith(`${result.player.color} disc placed in column ${col + 1}`); // Add this expectation
+        expect(view.announceMove).toHaveBeenCalledWith(`${result.player.color} disc placed in column ${col + 1}`);
         expect(model.isWin).toBe(true);
     });
 

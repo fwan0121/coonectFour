@@ -23,7 +23,9 @@ class GameView {
 
         const fragment = document.createDocumentFragment();
         for (let i = 0; i < rows; i++) {
-            for (let j = 0 ; j < cols; j++) {
+            const row = document.createElement('div');
+            row.setAttribute('role', 'row');
+            for (let j = 0; j < cols; j++) {
                 const cell = document.createElement('div');
                 cell.classList.add('cell');
                 cell.dataset.row = i.toString();
@@ -31,8 +33,9 @@ class GameView {
                 cell.setAttribute('role', 'gridcell');
                 cell.setAttribute('aria-label', 'empty');
                 cell.textContent = ' ';
-                fragment.append(cell);
+                row.appendChild(cell);
             }
+            fragment.appendChild(row);
         }
         this.boardElement.appendChild(fragment);
     }
@@ -47,7 +50,7 @@ class GameView {
         const cell = document.querySelector(`.cell[data-row="${row}"][data-col="${col}"]`);
         if (cell) {
             cell.style.backgroundColor = color;
-            cell.setAttribute('aria-label', color);
+            cell.setAttribute('aria-label', `${color} disc placed in column ${col + 1}`);
         } else {
             console.error(`Cell at row ${row}, col ${col} not found`);
         }
@@ -144,10 +147,9 @@ class GameView {
             }
         });
         if (highlighted) {
-            this.announceMove(`you are in column ${col + 1}`);
+            this.announceMove(`You are in column ${col + 1}`);
         }
     }
-
 }
 
 export default GameView;

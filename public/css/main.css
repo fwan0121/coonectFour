@@ -51,8 +51,9 @@ section {
     display: inline-block;
     margin: 2vw 1vw;
     padding: 1vw 2vw;
-    font-size: 1.6vw;
+    font-size: 20px;
     background-color: #007bff;
+    font-weight: bold;
     color: white;
     border: none;
     border-radius: 5px;

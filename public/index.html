@@ -2,18 +2,21 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <!-- <title>Simple Redux Example</title> -->
+    <title>Connect Four</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/main.css">
 </head>
 <body>
-
-    <h1>Connect four</h1>
-    <section>
-        <button id="resetBtn" role="button" aria-label="Reset Game">Reset Game</button>
-        <div id="board" role="grid" aria-label="Connect Four Board"></div>
-        <div id="gameStatus" role="status" aria-live="polite" tabindex="-1"></div>
-        <script type="module" src="./src/connectFour.js"></script>
-    </section>
+    <header role="banner">
+        <h1 id="gameSection">Connect Four</h1>
+    </header>
+    <main role="main">
+        <section role="region" aria-labelledby="gameSection">
+            <button id="resetBtn" role="button" aria-label="Reset Game">Reset Game</button>
+            <div id="board" role="grid" aria-label="Connect Four Board" style="grid-template-columns: repeat(7, 35px);"></div>
+            <div id="gameStatus" role="status" aria-live="polite" tabindex="-1"></div>
+            <script type="module" src="./src/connectFour.js"></script>
+        </section>
+    </main>
 </body>
 </html>
