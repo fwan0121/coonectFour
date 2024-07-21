@@ -27,7 +27,7 @@ describe('GameView', () => {
     test('should update the board and color correctly', () => {
         view.renderBoard(6, 7);
         view.updateBoard(0, 0, 'red');
-        const cell = screen.getByRole('gridcell', { name: 'red' });
+        const cell = screen.getByRole('gridcell', { name: 'red disc placed in column 1' });
         expect(cell).toHaveStyle('background-color: red');
     });
 
