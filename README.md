@@ -93,6 +93,15 @@ End-to-end tests are written to ensure the entire application works correctly fr
 - Playing a complete game
 - Resetting the game
 
+**Accessibility Tests (Axe)**
+
+Accessibility tests are integrated to ensure the application meets WCAG standards. These tests cover:
+
+- Checking for ARIA roles and properties
+- Ensuring color contrast ratios
+- Testing keyboard navigation
+
+
 ## Deployment
 
 To deploy this application, we use Heroku and GitHub Actions for a CI/CD pipeline. The deployment process includes the following steps:
@@ -104,7 +113,7 @@ To deploy this application, we use Heroku and GitHub Actions for a CI/CD pipelin
 3. **Deploy to Staging** - Deploy the built application to a staging environment on Heroku. The `ci.yml` GitHub Actions workflow handles this step.
 [Staging](https://my-connectfour-staging-fb1eec8bb235.herokuapp.com/)
 
-4. **Run End-to-End Tests** - Execute end-to-end tests using Playwright on the staging environment
+4. **Run End-to-End Tests** - Execute end-to-end tests using Playwright and Axe on the staging environment
 
 5. **Deploy to Production** - If all tests pass, deploy the application to the production environment on Heroku.
 [Production](https://my-connectfour-production-861f880b6b83.herokuapp.com/)
@@ -119,6 +128,7 @@ public/
 |   |-- connectFour.js
 |   |--tests/e2e
 |       |-- connectFour.test.js
+|       |-- aaccessibility.test.js
 |
 |   |-- controllers/
 |       |-- controller.js
