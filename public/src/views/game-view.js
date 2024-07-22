@@ -19,23 +19,20 @@ class GameView {
             throw new Error('Element with ID "board" does not exist in the DOM.');
         }
         this.boardElement.innerHTML = '';
+        this.boardElement.style.display = 'grid';
         this.boardElement.style.gridTemplateColumns = `repeat(${cols}, 35px)`;
+        this.boardElement.setAttribute('role', 'grid');
 
         const fragment = document.createDocumentFragment();
-        for (let i = 0; i < rows; i++) {
-            const row = document.createElement('div');
-            row.setAttribute('role', 'row');
-            for (let j = 0; j < cols; j++) {
-                const cell = document.createElement('div');
-                cell.classList.add('cell');
-                cell.dataset.row = i.toString();
-                cell.dataset.col = j.toString();
-                cell.setAttribute('role', 'gridcell');
-                cell.setAttribute('aria-label', 'empty');
-                cell.textContent = ' ';
-                row.appendChild(cell);
-            }
-            fragment.appendChild(row);
+        for (let i = 0; i < rows * cols; i++) {
+            const cell = document.createElement('div');
+            cell.classList.add('cell');
+            cell.dataset.row = Math.floor(i / cols).toString();
+            cell.dataset.col = (i % cols).toString();
+            cell.setAttribute('role', 'gridcell');
+            cell.setAttribute('aria-label', 'empty');
+            cell.textContent = ' ';
+            fragment.appendChild(cell);
         }
         this.boardElement.appendChild(fragment);
     }
@@ -121,7 +118,7 @@ class GameView {
      * Clears the game board.
      */
     clearBoard() {
-        if(this.boardElement) {
+        if (this.boardElement) {
             const cells = this.boardElement.querySelectorAll('.cell');
             cells.forEach(cell => {
                 cell.style.backgroundColor = 'white';
